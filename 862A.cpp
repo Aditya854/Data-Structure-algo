@@ -8,52 +8,20 @@ bool sortByVal(const pair<string, int> &a,  const pair<string, int> &b)
 } 
 
 
-void solve()
-{
-    int n;
-    cin>>n;
-    vector<int> v;
-    int aux;
-    for(int i=0;i<n;i++)
-    {
-        cin>>aux;
-        v.push_back(aux);
-    }
-        int p=0,m=0,flag=1;
-
-      for (int i=0;i<n;i++){
-            if (v[i]<0){
-                m++;
-            }
-            else {
-                p++;
-            }
+void solve() {
+    string a,b; cin >> a >> b;
+    char ca = a.back();
+    char cb = b.back();
+    if (ca == cb) {
+        if (a.size() == b.size()) cout << '=';
+        else if (ca == 'S') {
+            cout << (a.size() < b.size() ? '>' : '<');
+        } else {
+            cout << (a.size() < b.size() ? '<' : '>');
         }
-        for (int i=0;i<m;i++){
-            if (v[i]>0){
-                v[i]=v[i]*(-1);
-            }
-        }
-        for (int i=m;i<n;i++){
-            if (v[i]<0){
-                v[i]=v[i]*(-1);
-            }
-        }
-        for (int i=0;i<n-1;i++){
-            if (v[i]>v[i+1]){
-                flag=0;
-                break;
-            }
-        }
-        if (flag == 1){
-            cout << "YES" << endl;
-        }
-        else {
-            cout << "NO" << endl;
-        }
-    }
-
-
+    }else cout << (ca < cb ? '>' : '<');
+    cout << '\n';
+}
 
 
 int main()
