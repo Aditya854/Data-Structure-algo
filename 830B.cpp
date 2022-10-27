@@ -30,6 +30,11 @@ int findGCD(vector<int> arr, int n)
 }
 
 void solve() {
+    int n;
+    cin>>n;
+    string s;
+    cin>>s;
+
     
 
 return ;
