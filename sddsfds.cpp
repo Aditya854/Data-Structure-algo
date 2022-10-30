@@ -30,34 +30,33 @@ int findGCD(vector<int> arr, int n)
 }
 
 void solve() {
-    int n;
-    cin>>n;
-    string s;
-    cin>>s;
-
-   int cnt=0;
-
-    for(int i=0;i<s.length();i++)
-    {
-        if(s[i]=='Q')
+   int n;
+   cin >> n;
+   if(n%2 == 0)
+   {
+     for(int i=0;i<n/2;i++)
+     {
+        int a = floor((n/2)+1)+i;
+        int b = i+1;
+        cout<<a<<" "<<b<<" ";
+     }
+     cout<<endl;
+   }
+   else
+   {  
+     for(int i=0; i<=n/2; i++)
+     { 
+        if(i == n/2)
         {
-           cnt++;
+            cout<<n<<endl;
+            return ;
         }
-        else{
-            if(cnt>0)
-            {
-               cnt--;
-            }
-           
-        }
-    }
-
-    if(cnt==0)
-    {
-        cout<<"YES"<<endl;
-        return;
-    }
-    cout<<"NO"<<endl;
+        int a = floor((n/2)+1)+i;
+        int b = i+1;
+        cout<<a<<" "<<b<<" ";
+     }
+  
+   }
 return ;
 
 }
