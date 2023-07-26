@@ -99,27 +99,8 @@ long power(int x, int n)
 }
 
 void solve() {
-    int n,m,k,h;
-    cin>>n>>m>>k>>h;
-    vector<int>heights(n);
-    for(int i=0;i<n;i++)
-    {
-        cin>>heights[i];
-    } 
+ 
 
-    int ans=0;
-    for(int i=0;i<n;i++)
-    {
-        int p = heights[i];
-        if(abs(h-p)<=(m-1)*k && abs(h-p)!=0 && abs(h-p)%k==0)
-        {
-           
-                ans++;
-                // cout<<i<<endl;
-        }
-    }
-
-    cout<<ans<<endl;
 }
 
 // // // // YOUR CODE ENDS HERE // // // //

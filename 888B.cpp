@@ -99,27 +99,56 @@ long power(int x, int n)
 }
 
 void solve() {
-    int n,m,k,h;
-    cin>>n>>m>>k>>h;
-    vector<int>heights(n);
-    for(int i=0;i<n;i++)
-    {
-        cin>>heights[i];
-    } 
+  int n,k;
+  cin>>n>>k;
 
-    int ans=0;
-    for(int i=0;i<n;i++)
+  vector<int> v(n);
+  for(int i=0;i<n;i++)
+  {
+    cin>>v[i];
+  }
+
+  int f_k=k;
+  int l_k=k;
+  int temp1;
+  int temp2;
+
+  for(int i=0;i<n;i++)
+  {
+    if(v[i]==v[0] && f_k>0)
     {
-        int p = heights[i];
-        if(abs(h-p)<=(m-1)*k && abs(h-p)!=0 && abs(h-p)%k==0)
-        {
-           
-                ans++;
-                // cout<<i<<endl;
-        }
+        f_k--;
+        temp1=i;
     }
+  }
 
-    cout<<ans<<endl;
+  if(v[0]==v[n-1] && f_k==0)
+  {
+    cout<<"YES"<<endl;
+    return;
+  }
+
+  for(int i=n-1;i>=0;i--)
+  {
+    if(v[i]==v[n-1] && l_k>0)
+    {
+        l_k--;
+         temp2=i;
+    }
+  }
+
+  if(f_k==0 && l_k==0)
+  {
+    if(temp1<temp2)
+    {
+ cout<<"YES"<<endl;
+    return;
+    }
+   
+  }
+
+  cout<<"NO"<<endl;
+
 }
 
 // // // // YOUR CODE ENDS HERE // // // //
