@@ -99,24 +99,8 @@ long power(int x, int n)
 }
 
 void solve() {
- int b,c,h;
- cin>>b>>c>>h;
-int ans=0;
- if(b==c+h)
- {
-    ans = (2*b)-1;
- }
-
- else if(b>c+h)
- {
-    ans = 2*(c+h)+1;
- }
- else{
-    ans = (2*b)-1;
- }
-
- cout<<ans<<endl;
-return ;
+ 
+ 
 }
 
 // // // // YOUR CODE ENDS HERE // // // //
