@@ -99,49 +99,14 @@ long power(int x, int n)
 }
 
 void solve() {
-  string s;
-  cin>>s;
-int n = s.size();
-  int pos=n;
-  int ind=n-1;
-
-  while(ind>-1)
+  int n;
+  cin>>n;
+  int m = (n*(n-1))/2;
+  vector<int> v(m);
+  for(int i=0;i<m;i++)
   {
-    if(s[ind]-'0'>=5)
-    {
-        int next = ind-1;
-
-        while(next>-1 && s[next]=='9')
-        {
-            --next;
-        }
-
-        if(next==-1)
-        {
-            pos=1;
-            s = '1'+s;
-            break;
-        }
-        else{
-            ind = next;
-            pos = next+1;
-            int c = s[ind]-'0';
-            ++c;
-            s[ind] = c+'0';
-        }
-    }
-    else{
-        --ind;
-    }
+    cin>>v[i];
   }
-
-  for(int i=pos;i<s.length();i++)
-  {
-    s[i]='0';
-  }
-
-  cout<<s<<endl;
-  return ;
 }
 
 // // // // YOUR CODE ENDS HERE // // // //
@@ -192,4 +157,50 @@ void sol1()
   }
   cout<<"YES"<<endl;
   return;
+}
+
+void sol2(){
+ string s;
+  cin>>s;
+int n = s.size();
+  int pos=n;
+  int ind=n-1;
+
+  while(ind>-1)
+  {
+    if(s[ind]-'0'>=5)
+    {
+        int next = ind-1;
+
+        while(next>-1 && s[next]=='9')
+        {
+            --next;
+        }
+
+        if(next==-1)
+        {
+            pos=1;
+            s = '1'+s;
+            break;
+        }
+        else{
+            ind = next;
+            pos = next+1;
+            int c = s[ind]-'0';
+            ++c;
+            s[ind] = c+'0';
+        }
+    }
+    else{
+        --ind;
+    }
+  }
+
+  for(int i=pos;i<s.length();i++)
+  {
+    s[i]='0';
+  }
+
+  cout<<s<<endl;
+  return ;
 }
