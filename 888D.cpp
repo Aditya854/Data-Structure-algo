@@ -99,24 +99,24 @@ long power(int x, int n)
 }
 
 void solve() {
- int b,c,h;
- cin>>b>>c>>h;
-int ans=0;
- if(b==c+h)
- {
-    ans = (2*b)-1;
- }
+  int n = 0; cin >> n; 
+	vector<int> inp; inp.assign(n, 0);
+	for (auto& x : inp) cin >> x;
+	sort(inp.begin(), inp.end());
+	if (inp.back() == inp[0]) {
+		cout << "-1\n";
+		return;
+	}
+	else {
+		int it = 0;
+		while (inp[it] == inp[0]) it++;
+		cout << it << " " << n - it << "\n";
+		for (int j = 0; j < it; ++j) cout << inp[j] << " ";
+        cout<<endl;
+		for (int j = it; j < n; ++j) cout << inp[j] << " ";
+	}
 
- else if(b>c+h)
- {
-    ans = 2*(c+h)+1;
- }
- else{
-    ans = (2*b)-1;
- }
-
- cout<<ans<<endl;
-return ;
+   
 }
 
 // // // // YOUR CODE ENDS HERE // // // //
