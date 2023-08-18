@@ -100,35 +100,29 @@ long power(int x, int n)
 
 
 void solve() {
-  string s;
-  cin>>s;
-  int n=s.size();
-  string s1="", s2="";
-  for(int i=0;i<n;i++) 
-  {
-    s1+="(";
-  }
+  int n;
+  cin>>n;
+  vector<int> v(n);
   for(int i=0;i<n;i++)
   {
-    s1+=")";
-  }
-  for(int i=0;i<n;i++)
-  { 
-    s2+="()";
-  }
-  
-  if(s1.find(s)==string::npos){
-    cout<<"YES"<<endl;
-    cout<<s1<<endl;
-  }
-  else if(s2.find(s)==string::npos){
-    cout<<"YES"<<endl;
-    cout<<s2<<endl;
-  }
-  else{
-    cout<<"NO"<<endl;
+    cin>>v[i];
   }
 
+  int ans = 0;
+
+  vector<int> dp(n+1);
+  for(int i=0;i<n;i++)
+  {
+    if(i+v[i]<n)
+    {
+        dp[i+v[i]] = max(dp[i+v[i]],dp[i]+v[i]);
+    }
+    else{
+        dp[n] = max(dp[n],dp[i]+v[i]); 
+    }
+  }
+
+  cout<<dp[n]<<endl;
 }
 
 // // // // YOUR CODE ENDS HERE // // // //
