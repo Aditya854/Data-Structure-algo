@@ -98,45 +98,36 @@ long power(int x, int n)
     return pow;
 }
 
-int helper(int i,int h,int g_serum,int b_serum,int n,vector<int>& v)
-{
-    if(i==n)
-    {
-        return 0;
-    }
 
-    if(v[i]<h)
-    {
-        return helper(i+1,h+floor(v[i]/2),g_serum,b_serum,n,v)+1;
-    }
-int ans1 = 0;
-int ans2 = 0;
-    if(g_serum>0)
-    {
-         ans1 = helper(i,2*h,g_serum-1,b_serum,n,v);
-    }
-
-    if(b_serum>0)
-    {
-        ans2 = helper(i,3*h,g_serum,b_serum-1,n,v);
-    }
-
-    return max(ans1,ans2);
-}
 void solve() {
-  int n,h;
-  cin>>n>>h;
-
-  vector<int> v(n);
+  string s;
+  cin>>s;
+  int n=s.size();
+  string s1="", s2="";
+  for(int i=0;i<n;i++) 
+  {
+    s1+="(";
+  }
   for(int i=0;i<n;i++)
   {
-    cin>>v[i];
+    s1+=")";
   }
-
-  sort(v.begin(),v.end());
+  for(int i=0;i<n;i++)
+  { 
+    s2+="()";
+  }
   
-  int ans = helper(0,h,2,1,n,v);
-  cout<<ans<<endl;
+  if(s1.find(s)==string::npos){
+    cout<<"YES"<<endl;
+    cout<<s1<<endl;
+  }
+  else if(s2.find(s)==string::npos){
+    cout<<"YES"<<endl;
+    cout<<s2<<endl;
+  }
+  else{
+    cout<<"NO"<<endl;
+  }
 
 }
 
