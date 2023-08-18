@@ -62,7 +62,7 @@ class heap_ds{
 
 
 // get the minimum element from min heapds
-// TC :- log(N)
+// TC :- O(N)
     int extract_min()
     {
         if(heap_size<=0)
