@@ -102,27 +102,23 @@ long power(int x, int n)
 void solve() {
   int n;
   cin>>n;
-  vector<int> v(n);
-  for(int i=0;i<n;i++)
+  vector<int> v;
+  for(int i=1;i<=n;i++)
   {
-    cin>>v[i];
+    int a;
+    cin>>a;
+    v.push_back(a);
   }
 
-  int ans = 0;
-
-  vector<int> dp(n+1);
-  for(int i=0;i<n;i++)
+  int ans=0;
+  for(int i=1;i<=n;i++)
   {
-    if(i+v[i]<n)
-    {
-        dp[i+v[i]] = max(dp[i+v[i]],dp[i]+v[i]);
-    }
-    else{
-        dp[n] = max(dp[n],dp[i]+v[i]); 
-    }
+    int x = abs(v[i-1]-i);
+    ans = __gcd(ans,x);
   }
 
-  cout<<dp[n]<<endl;
+  cout<<ans<<endl;
+  return;
 }
 
 // // // // YOUR CODE ENDS HERE // // // //
