@@ -40,12 +40,19 @@ void solve() {
 
 
 int main()
-{
-    int l;
-    cin>>l;
-    for(int o=0;o<l;o++)
-    {
-       solve();
-    }
-    return 0;
+{   string S = "i.like.this.program.very.much";
+     stringstream ss(S);
+
+     vector<string> ans;
+     string aux;
+
+     while(getline(ss,aux,'.'))
+     {
+        ans.push_back(aux);
+     }
+
+     for(auto it:ans)
+     {
+        cout<<it<<endl;
+     }
 }

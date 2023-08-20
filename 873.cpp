@@ -1,147 +1,35 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
-typedef long long ll ;
-#define int long long int
 
+int maxGold(vector<vector<int>>& offers, int n) {
+    vector<int> dp(n, 0);
 
-class DSU{
-    int *parent;
-    int *rank;
-public:
-    // Constructor
-    DSU(int n){
-        
-        // Defining size of the arrays.
-        parent=new int[n];
-        rank=new int[n];
+    for (const auto& offer : offers) {
+        int starti = offer[0];
+        int endi = offer[1];
+        int goldi = offer[2];
 
-        for(int i=0;i<n;i++)
-        {
-            parent[i]=i;
-            rank[i]=0;
+        if (starti > 0) {
+            dp[starti] = max(dp[starti], dp[starti - 1] + goldi);
+        } else {
+            dp[starti] = max(dp[starti], goldi);
+        }
+
+        if (endi + 1 < n) {
+            dp[endi + 1] = max(dp[endi + 1], dp[starti]);
         }
     }
-    
-    // Find function
-    int find(int node){
-        
-        if(node==parent[node]) return node;
-        
-        return parent[node]=find(parent[node]);
-    }
-    
-    // Union function 
-     void Union(int u,int v){
-        u=find(u);
-        v=find(v);
-        if(u!=v)
-        {
-            if(rank[u]<rank[v])
-            {
-                int temp=u;
-                u=v;
-                v=temp;
-            }
-            parent[v]=u;
-            if(rank[u]==rank[v])
-                rank[u]++;
-        }
-    }
-};
 
-
-
-bool isSubstring(string s1, string s2)
-{
-    // using find method to check if s1 is
-    // p1 substring of s2
-    if (s2.find(s1) != string::npos)
-        return true;
-    return false;
-} 
-
- int gcd( int a, int b)
-{
-    return b == 0 ? a : gcd(b, a % b);   
+    return *max_element(dp.begin(), dp.end());
 }
 
+int main() {
+    vector<vector<int>> offers = {{0,0,1},{0,2,10},{1,3,2}};
+    int n = 5;
+    cout << maxGold(offers, n) << endl;  // Output: 16
 
-int countNodesConnectedToNode(vector<vector<int>>& graph, int startNode) {
-    unordered_set<int> visited;
-    int counter = 0;
-    
-    function<void(int)> dfs = [&](int node) {
-        visited.insert(node);
-        counter++;
-        for (int neighbor : graph[node]) {
-            if (visited.count(neighbor) == 0) {
-                dfs(neighbor);
-            }
-        }
-    };
-    
-    dfs(startNode);
-    return counter;
-}
-
-// // // // // WRITE UR CODE HERE // // // //
-long power(int x, int n)
-{
-    // Initialize result to 1
-    long long pow = 1;
- 
-    // Multiply x for n times
-    for (int i = 0; i < n; i++) {
-        pow = pow * x;
-    }
- 
-    return pow;
-}
-
-
-void solve() {
-   int n;
-   cin>>n;
-   if(n==1)
-   {
-    cout<<1<<endl;
-    return;
-   }
-
-   if(n%2)
-   {
-    cout<<-1<<endl;
-    return;
-   }
-   else{
-    for(int i=0;i<n;i++)
-    {
-        if(i%2)
-        {
-            cout<<i<<" ";
-        }
-        else{
-            cout<<n-i<<" ";
-        }
-    }
-    cout<<endl;
-   }
-   return;
-}
-
-// // // // YOUR CODE ENDS HERE // // // //
-
-
-signed main()
-{
-    ios::sync_with_stdio(false);
-    cin.tie(0), cout.tie(0);
-        cout.precision(10); cout.setf(ios::fixed);
-    int l;
-    cin>>l;
-    for(int c=0;c<l;c++)
-    {
-       solve();
-    }
-    // return 0;
+    return 0;
 }

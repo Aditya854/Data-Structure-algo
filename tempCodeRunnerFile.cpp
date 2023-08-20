@@ -1,5 +1,6 @@
-if(n==1)
-//    {
-//     cout<<1<<endl;
-//     return;
-//    }
+if(i==S.size()-1)
+                // {
+                //     temp+=S[i];
+                //     st.push(temp);
+                //     temp="";
+                // }
