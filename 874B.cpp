@@ -98,23 +98,41 @@ long power(int x, int n)
     return pow;
 }
 
+int count(int n)
+{
+    int cnt=0;
+    while(n>0)
+    {
+        if(n%2!=0)
+        {
+            cnt++;
+        }
+        n=n/2;
+    }
+    return cnt;
+}
+
 void solve() {
    int n;
    cin>>n;
-   string s;
-   cin>>s;
-   set<string> ss;
-
-   for(int i=1;i<n;i++)
+   vector<int> v(n);
+   for(int i=0;i<n;i++)
    {
-      string temp = "";
-      temp+=s[i-1]
-      temp+=s[i];
-      ss.insert(temp);
-   } 
+    cin>>v[i];
+   }
+   multimap<int,int> mp;
 
-   cout<<ss.size()<<endl;
-   return ;
+   for(int i=0;i<n;i++)
+   {
+    mp.insert({(-1)*count(v[i]) , v[i]});
+   }
+
+   for(auto it:mp)
+   {
+    cout<<it.second<<" ";
+   }
+   cout<<endl;
+  return;
 }
 
 // // // // YOUR CODE ENDS HERE // // // //
