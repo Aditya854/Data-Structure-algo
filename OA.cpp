@@ -50,8 +50,5 @@ cout<<ans.size()<<endl;
     {
         cout<<it<<endl;
     }
-
-    
-
     return 0;
 }
