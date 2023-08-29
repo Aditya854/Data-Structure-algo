@@ -1,18 +1,15 @@
-#include<bits/stdc++.h>
-using namespace std;
-
-void solve()
-{
-    
+wait(s){
+    while(s<=0);
+    s=s-1;
 }
 
-int main()
-{
-    int l;
-    cin>>l;
-    for(int o=0;o<l;o++)
-    {
-       solve();
-    }
-    return 0;
+signal(s){
+    s=s+1;
 }
+
+do{
+  wait(s);
+  // critical section
+  signal(s);
+//   remainder section
+}while(T)
