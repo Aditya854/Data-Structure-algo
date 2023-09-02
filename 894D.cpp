@@ -109,88 +109,70 @@ bool cmp(vector<int> a,vector<int> b)
 }
 
 void solve() {
-  int n;
-  cin>>n;
-  vector<int> v(n);
-  for(int i=0;i<n;i++)
-  {
-    cin>>v[i];
-  }
-
-   unordered_map<int,int> mp1;
-   for(auto it:v)
+   long long key;
+   cin>>key;
+   bool is_pos;
+   if(key>0)
    {
-      mp1[it]++;
+    is_pos = true;
+   }
+   else{
+    is_pos=false;
    }
 
-   unordered_map<int,int> mp2;
-   for(int i=0;i<v.size();i++)
+   vector<int> freq(10,0);
+   long long temp = abs(key);
+   while(temp)
    {
-    if(mp2.find(v[i])!=mp2.end())
-    {
-        continue;
-    }
-    else{
-        mp2.insert({v[i],i});
-    }
+    int d = temp%10;
+    freq[d]++;
+    temp = temp/10;
+   }
+long long result = 0;
+   if(is_pos)
+   {
+     for(int i=1;i<=9;i++)
+     {
+        if(freq[i])
+        {
+            result=i;
+            freq[i]--;
+            break;
+        }
+     }
+
+     for(int i=0;i<=9;i++)
+     {
+        if(freq[i]--)
+        {
+          result = result*10 + i;
+        }
+        
+     }
+   }
+   else{
+        for(int i=9;i>=1;i--)
+        {
+            if(freq[i])
+            {
+                result=i;
+                freq[i]--;
+                break;
+            }
+        }
+
+        for(int i=9;i>=0;i--)
+        {
+            if(freq[i]--)
+            {
+            result = result*10 +i;
+            }
+            
+        }
+        result = -1*result;
    }
 
-   for(auto it:mp1)
-   {
-    cout<<it.first<<" "<<it.second<<endl;
-   }
-   cout<<endl;
-   
-   for(auto it:mp2)
-   {
-    cout<<it.first<<" "<<it.second<<endl;
-   }
-   cout<<endl;
-
-
-   vector<vector<int>> pre;
-   for(auto it:mp1)
-   {
-     int a = it.second;
-     int b = mp2[it.first];
-     int c = it.first;
-
-     pre.push_back({a,b,c});
-   }
-
-   for(auto it:pre)
-   {
-    cout<<it[0]<<" "<<it[1]<<" "<<it[2]<<endl;
-   }
-   cout<<endl;
-
-   sort(pre.begin(),pre.end(),cmp);
-
-   for(auto it:pre)
-   {
-    cout<<it[0]<<" "<<it[1]<<" "<<it[2]<<endl;
-   }
-   cout<<endl;
-
-   vector<int> ans;
-   for(auto it:pre)
-   {
-      while(it[0]>0)
-      {
-        ans.push_back(it[2]);
-        --it[0];
-      }
-   }
-
-   for(auto it:ans)
-   {
-    cout<<it<<" ";
-   }
-   cout<<endl;
-
-
-
-  
+   cout<<result<<endl;
 }
 
 // // // // YOUR CODE ENDS HERE // // // //
