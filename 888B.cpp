@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll ;
-#define int long long int
+// #define int long long int
 
 
 class DSU{
@@ -101,20 +101,18 @@ long power(int x, int n)
 void solve() {
    int n;
    cin>>n;
-   string s;
-   cin>>s;
-   set<string> ss;
-
-   for(int i=1;i<n;i++)
+   int ans = INT_MAX;
+   for(int i=0;i<n;i++)
    {
-      string temp = "";
-      temp+=s[i-1]
-      temp+=s[i];
-      ss.insert(temp);
-   } 
+    int a,b;
+    cin>>a>>b;
 
-   cout<<ss.size()<<endl;
-   return ;
+    if(a+(b-1)/2 < ans)
+    {
+        ans = a + (b-1)/2;
+    }
+   }
+   cout<<ans<<endl;
 }
 
 // // // // YOUR CODE ENDS HERE // // // //

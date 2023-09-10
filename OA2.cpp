@@ -2,44 +2,37 @@
 using namespace std;
 
 
-vector<bool> prime;
-void sieve(int x, int y)
-{
-
-	prime.resize(y + 1, true);
-	prime[1] = false;
-
-	for (int i = 2; i * i <= y; i++) {
-		if (prime[i])
-			for (int j = i * i; j <= y; j += i) {
-				prime[j] = false;
-			}
-	}
-}
-
-vector<int> allPrime(int l, int r)
-{
-	vector<int> result;
-	for (int i = l; i <= r; i++) {
-		if (prime[i]) {
-			result.push_back(i);
-		}
-	}
-
-	return result;
-}
-
 int main()
 {
-	int starting_range = 23;
-	int ending_range = 42;
+   int n;
+   cin>>n;
+   vector<int> v(n);
+   for(int i=0;i<n;i++)
+    {
+        cin>>v[i];
+    }
+   
+    vector<vector<int>> temp;
 
-	sieve(starting_range, ending_range);
+    for(int i=0;i<n;i++)
+    {
+        vector<int> aux;
+        for(int j=i;j<n;j++)
+        {
+            aux.push_back(v[j]);
+            temp.push_back(aux);
+        }
+    }
 
-	vector<int> result
-		= allPrime(starting_range, ending_range);
+    for(auto it:temp)
+    {
+        for(auto itt:it)
+        {
+            cout<<itt<<" ";
+        }
+        cout<<endl;
+    }
 
-	int ans = result.size();
-    cout<<ans<<endl;
-	return 0;
+
+    return 0;
 }

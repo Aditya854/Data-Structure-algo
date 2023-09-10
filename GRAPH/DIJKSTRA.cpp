@@ -20,10 +20,12 @@ int main()
     // *ptr = a;
     // cout<<*ptr<<endl;
 
-    int arr[] = {4,5,6,7};
-    int *p = (arr+1);
-    cout<<*p<<endl;
+    // int arr[] = {4,5,6,7};
+    // int *p = (arr+1);
+    // cout<<*p<<endl;
+
+    // cout<<*arr+9;
+
     
-    cout<<*arr+9;
     
 }
