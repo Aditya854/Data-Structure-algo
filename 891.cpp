@@ -101,12 +101,30 @@ long power(int x, int n)
 void solve() {
   int n;
   cin>>n;
-  int m = (n*(n-1))/2;
-  vector<int> v(m);
-  for(int i=0;i<m;i++)
+  vector<pair<int,int>> vp(n);
+  int aux;
+  for(int i=0;i<n;i++)
   {
-    cin>>v[i];
+      cin>>aux;
+      vp[i].first=aux;
+      vp[i].second=i;
   }
+
+  sort(vp.begin(),vp.end());
+  reverse(vp.begin(),vp.end());
+
+  vector<int> ans(n);
+  for(int i=0;i<n;i++)
+  {
+    ans[vp[i].second] = i+1;
+  }
+
+  for(auto it:ans)
+  {
+    cout<<it<<" ";
+  }
+  cout<<endl;
+  return;
 }
 
 // // // // YOUR CODE ENDS HERE // // // //
