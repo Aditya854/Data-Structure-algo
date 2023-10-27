@@ -9,35 +9,33 @@ bool sortByVal(const pair<string, int> &a,  const pair<string, int> &b)
 
 
 void solve() {
-   int n,k;
-   cin>>n>>k;
+//    int n,k;
+//    cin>>n>>k;
+//    vector<int> arr(n);
+//    for(int i=0;i<n;i++)
+//    {
+//     cin>>arr[i];
+//    }
 
-   string s;
-   cin>>s;
-   unordered_map<char,int> mp;
-   for(auto it:s)
-   {
-    mp[it]++;
-   }
+//    unordered_map<int,int> mp;
+//    for(auto it:arr)
+//    {
+//      mp[it]++;
+//    }
+//    if(mp.find(k)!=mp.end())
+//    {
+//       cout<<"YES"<<endl;
+//       return;
+//    }
+//    cout<<"NO"<<endl;
 
-   int even_f=0,odd_f=0;
-   for(auto it:mp)
+   int n;
+   cin>>n;
+   for(int i=0;i<n;i++)
    {
-    if(it.second%2!=0)
-    {
-        odd_f++;
-    }
-    else{
-        even_f++;
-    }
+    cout<<2*i + 1<<" ";
    }
-
-   if(k>=odd_f-1)
-   {
-    cout<<"YES"<<endl;
-    return;
-   }
-   cout<<"NO"<<endl;
+   cout<<endl;
    return;
 }
 
