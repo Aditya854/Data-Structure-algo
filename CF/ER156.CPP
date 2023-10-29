@@ -7,35 +7,38 @@ bool sortByVal(const pair<string, int> &a,  const pair<string, int> &b)
     return (a.second > b.second); 
 } 
 
-
+bool check(char a,char b,char c,char d)
+{
+    if(a!=b && c!=d)
+    {
+        return true;
+    }
+    return false;
+}
 void solve() {
-//    int n,k;
-//    cin>>n>>k;
-//    vector<int> arr(n);
-//    for(int i=0;i<n;i++)
-//    {
-//     cin>>arr[i];
-//    }
-
-//    unordered_map<int,int> mp;
-//    for(auto it:arr)
-//    {
-//      mp[it]++;
-//    }
-//    if(mp.find(k)!=mp.end())
-//    {
-//       cout<<"YES"<<endl;
-//       return;
-//    }
-//    cout<<"NO"<<endl;
-
    int n;
    cin>>n;
+   vector<int> arr(n);
    for(int i=0;i<n;i++)
    {
-    cout<<2*i + 1<<" ";
+    cin>>arr[i];
    }
-   cout<<endl;
+
+   int maxi = INT_MIN;
+   int cnt=0;
+   for(int i=0;i<n;i++)
+   {
+    if(arr[i]>=0)
+    {
+        cnt++;
+    }
+    else{
+        maxi = max(maxi,cnt);
+        cnt=0;
+    }
+   }
+
+   cout<<"max length is "<<maxi<<endl;
    return;
 }
 
