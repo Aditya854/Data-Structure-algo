@@ -18,27 +18,29 @@ bool check(char a,char b,char c,char d)
 void solve() {
    int n;
    cin>>n;
-   vector<int> arr(n);
-   for(int i=0;i<n;i++)
+   vector<int> arr(n+1);
+
+   for(int i=1;i<=n;i++)
    {
     cin>>arr[i];
    }
 
-   int maxi = INT_MIN;
-   int cnt=0;
-   for(int i=0;i<n;i++)
+   bool flag=true;
+   for(int i=1;i<n;i++)
    {
-    if(arr[i]>=0)
+    if(arr[i]>arr[i+1] && i!=1 && i!=2 && i!=4 && i!=8 && i!=16)
     {
-        cnt++;
-    }
-    else{
-        maxi = max(maxi,cnt);
-        cnt=0;
+        flag=false;
     }
    }
 
-   cout<<"max length is "<<maxi<<endl;
+   if(flag==true)
+   {
+    cout<<"YES"<<endl;
+    return;
+   }
+cout<<"NO"<<endl;
+
    return;
 }
 
