@@ -1,34 +1,21 @@
-#include <bits/stdc++.h>
-using namespace std;
+#include <iostream>
+#include <string>
 
-
-
-
-
-void solve() {
-  int n;
-  cin>>n;
-
-  if(n!=1 && n<=3)
-  {
-    cout<<"NO SOLUTION"<<endl;
-    return;
-  }
-
-  for(int i=2;i<=n;i+=2)
-  {
-    cout<<i<<" ";
-  }
-  for(int i=1;i<=n;i+=2)
-  {
-    cout<<i<<" ";
-  }
-  return;
+std::string solution(std::string S) {
+    size_t pos;
+    // Replace all occurrences of "plus" with "+"
+    while ((pos = S.find("plus")) != std::string::npos) {
+        S.replace(pos, 4, "+");
+    }
+    // Replace all occurrences of "minus" with "-"
+    while ((pos = S.find("minus")) != std::string::npos) {
+        S.replace(pos, 5, "-");
+    }
+    return S;
 }
 
-
-int main()
-{
-    solve();
+int main() {
+    std::string S = "plusminusminusplus"; // Example input
+    std::cout << solution(S) << std::endl; // Output should be "-+-"
     return 0;
 }
